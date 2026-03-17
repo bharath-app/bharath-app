@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    background-color: #e9ecef;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 85%;
+    max-width: 400px;
+}
+
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #003366;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+header h1 {
+    color: #003366;
+    margin: 0;
+    font-size: 22px;
+}
+
+header p {
+    color: #cc6600;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #003366;
+    border-radius: 10px;
+    background-color: white;
+    color: #003366;
+    font-size: 16px;
+    font-weight: bold;
+}
