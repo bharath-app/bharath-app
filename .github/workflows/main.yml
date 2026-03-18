@@ -17,14 +17,14 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install Cordova 9
-        run: npm install -g cordova@9.0.0
+      - name: Install Cordova
+        run: npm install -g cordova
 
       - name: Build APK
         run: |
-          # Java 8 സെറ്റ് ചെയ്യുന്നു
-          export JAVA_HOME=$JAVA_HOME_8_X64
-          cordova platform add android@8.1.0 || true
+          # പ്ലാറ്റ്‌ഫോം പുതുതായി ചേർക്കുന്നു
+          cordova platform add android
+          # ആപ്പ് ബിൽഡ് ചെയ്യുന്നു
           cordova build android --debug
 
       - name: Upload APK
