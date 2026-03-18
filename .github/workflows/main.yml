@@ -6,27 +6,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Java 8 for App
+      # നമുക്ക് Java 8 ഉം 17 ഉം ഒരേസമയം സെറ്റ് ചെയ്യാം
+      - name: Set up Java versions
         uses: actions/setup-java@v4
         with:
-          java-version: '8'
+          java-version: |
+            8
+            17
           distribution: 'temurin'
 
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Cordova
         run: npm install -g cordova
 
       - name: Build APK
         run: |
-          # പുതിയ ഗ്രേഡിൽ Java 17 ആവശ്യപ്പെടുന്നതുകൊണ്ട് അത് ഇവിടെ സെറ്റ് ചെയ്യുന്നു
+          # പ്ലാറ്റ്‌ഫോം ആഡ് ചെയ്യാൻ Java 17 ഉപയോഗിക്കുന്നു
           export JAVA_HOME=$JAVA_HOME_17_X64
           cordova platform add android || true
           
-          # ആപ്പ് ബിൽഡ് ചെയ്യാൻ Java 8 ലേക്ക് മാറുന്നു
+          # ബിൽഡ് ചെയ്യാൻ Java 8 ലേക്ക് മാറുന്നു
           export JAVA_HOME=$JAVA_HOME_8_X64
           cordova build android --debug
 
