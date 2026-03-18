@@ -6,25 +6,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # ജാവ 17 സെറ്റ് ചെയ്യുന്നു (ഇത് Gradle-ന് ആവശ്യമാണ്)
-      - name: Setup Java 17
+      # Java 8 നിർബന്ധമായും സെറ്റ് ചെയ്യുന്നു
+      - name: Setup Java 8
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '8'
           distribution: 'temurin'
 
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install Cordova
         run: npm install -g cordova
 
       - name: Build APK
         run: |
-          # Cordova തനിയെ അനുയോജ്യമായ ജാവ എടുത്തോളും
+          # സിസ്റ്റത്തോട് Java 8 തന്നെ ഉപയോഗിക്കാൻ നിർബന്ധിക്കുന്നു
+          export JAVA_HOME=$JAVA_HOME_8_X64
+          export PATH=$JAVA_HOME/bin:$PATH
+          
           cordova platform add android || true
+          
+          # ബിൽഡ് തുടങ്ങുന്നു
           cordova build android --debug
 
       - name: Upload APK
